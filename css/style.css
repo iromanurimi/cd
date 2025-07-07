@@ -1808,7 +1808,7 @@ img {
     background-color: var(--surface);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
     width: 100%; /* Add this to ensure cards take full width of their container */
     max-width: 350px; /* Add a max-width to prevent cards from becoming too wide */
