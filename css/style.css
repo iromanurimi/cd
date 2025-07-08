@@ -1359,8 +1359,8 @@ img {
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -1455,7 +1455,7 @@ img {
 .mobile-menu-header {
     display: flex;
     justify-content: flex-end;
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 .close-menu {
@@ -1474,7 +1474,7 @@ img {
 .mobile-menu {
     height: calc(100% - 70px);
     overflow-y: auto;
-    padding: 1rem;
+    padding: 0.3rem;
 }
 
 .overlay {
