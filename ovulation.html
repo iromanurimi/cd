@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="ha">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ciki da Raino - Kalkuletar Ovulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciki da Raino - Kalkuletar Binciko Lokacin Haihuwa</title>
+    <!-- Preload resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" as="style">
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Modern fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-        
-      
 </head>
 <body>
-    <!-- Navigation Bar [Menu] -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <a href="#" class="logo">
-            <img src="images/logona.svg" alt="Logo"> <label for="" style="color: black;">Ciki da Raino</label>
+            <img src="images/logona.svg" alt="Logo"> <label for="">Ciki da Raino</label>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Shafin Gida</a></li>
@@ -26,103 +31,88 @@
             <li><a href="about.html">Game Da Mu</a></li>
             <li><a href="hosapital.html">Asibiti Mafi Kusa</a></li>
         </ul>
-        <button class="hamburger" id="hamburger">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
     </nav>
     
-    <!-- Mobile Menu [Menu na wayar hannu] -->
+    <!-- Mobile Menu -->
     <div class="overlay" id="overlay"></div>
     <div class="mobile-menu-container" id="mobile-menu-container">
-    <div class="mobile-menu-header">
-        <button class="close-menu" id="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
+        <div class="mobile-menu-header">
+            <button class="close-menu" id="close-menu" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <div class="bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Shafin Gida (Home)</span>
+                </a>
+                <a href="ovulation.html" class="nav-item">
+                    <i class="fas fa-venus-mars" aria-hidden="true"></i>
+                    <span>Kalkuletar Ovulation</span>
+                </a>
+                <a href="tracker.html" class="nav-item">
+                    <i class="fas fa-baby-carriage" aria-hidden="true"></i>
+                    <span>Kalkuletar Binciko EDD</span>
+                </a>
+                <a href="getting-pregnant.html" class="nav-item">
+                    <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                    <span>Shirye-shiryen Daukar Ciki</span>
+                </a>
+                <a href="pregnancy.html" class="nav-item">
+                    <i class="fas fa-baby" aria-hidden="true"></i>
+                    <span>Goyon Ciki (Pregnancy)</span>
+                </a>
+                <a href="parenting.html" class="nav-item">
+                    <i class="fas fa-child" aria-hidden="true"></i>
+                    <span>Kula da Yara (Parenting)</span>
+                </a>
+                <a href="hospital.html" class="nav-item">
+                    <i class="fas fa-hospital-user" aria-hidden="true"></i>
+                    <span>Nemo Asibitoci Mafi Kusa</span>
+                </a>
+                <a href="nutrition.html" class="nav-item">
+                    <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                    <span>Abinci mai Gina Jiki</span>
+                </a>
+                <a href="faq.html" class="nav-item">
+                    <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    <span>Tambayoyi da Amsoshi</span>
+                </a>
+                <a href="blog.html" class="nav-item">
+                    <i class="fas fa-newspaper" aria-hidden="true"></i>
+                    <span>Labarai da Shawarwari</span>
+                </a>
+                <a href="about.html" class="nav-item">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    <span>Game Da Mu (About Us)</span>
+                </a>
+                <a href="contact.html" class="nav-item">
+                    <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                    <span>Tuntube Mu (Contact Us)</span>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="mobile-menu">
-        
-      <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
-<div class="bottom-nav">
-    <!-- Home -->
-    <a href="index.html" class="nav-item">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Shafin Gida (Home)</span>
-    </a>
-
-    <!-- Fertility Tools -->
-    <a href="ovulation.html" class="nav-item">
-        <i class="fas fa-venus-mars" aria-hidden="true"></i>
-        <span>Kalkuletar Ovulation</span>
-    </a>
-    <a href="tracker.html" class="nav-item">
-        <i class="fas fa-baby-carriage" aria-hidden="true"></i>
-        <span>Kalkuletar Binciko EDD</span>
-    </a>
-
-    <!-- Pregnancy Info -->
-    <a href="getting-pregnant.html" class="nav-item">
-        <i class="fas fa-heartbeat" aria-hidden="true"></i>
-        <span>Shirye-shiryen Daukar Ciki</span>
-    </a>
-    <a href="pregnancy.html" class="nav-item">
-        <i class="fas fa-baby" aria-hidden="true"></i>
-        <span>Goyon Ciki (Pregnancy)</span>
-    </a>
-
-    <!-- Parenting -->
-    <a href="parenting.html" class="nav-item">
-        <i class="fas fa-child" aria-hidden="true"></i>
-        <span>Kula da Yara (Parenting)</span>
-    </a>
-
-    <!-- Nearby Hospitals -->
-    <a href="hospital.html" class="nav-item">
-        <i class="fas fa-hospital-user" aria-hidden="true"></i>
-        <span>Nemo Asibitoci Mafi Kusa</span>
-    </a>
-
-    <!-- New: Nutrition Tips -->
-    <a href="nutrition.html" class="nav-item">
-        <i class="fas fa-apple-alt" aria-hidden="true"></i>
-        <span>Abinci mai Gina Jiki</span>
-    </a>
-
-    <!-- New: FAQs -->
-    <a href="faq.html" class="nav-item">
-        <i class="fas fa-question-circle" aria-hidden="true"></i>
-        <span>Tambayoyi da Amsoshi</span>
-    </a>
-
-    <!-- New: Blog/Articles -->
-    <a href="blog.html" class="nav-item">
-        <i class="fas fa-newspaper" aria-hidden="true"></i>
-        <span>Labarai da Shawarwari</span>
-    </a>
-
-    <!-- About & Contact -->
-    <a href="about.html" class="nav-item">
-        <i class="fas fa-info-circle" aria-hidden="true"></i>
-        <span>Game Da Mu (About Us)</span>
-    </a>
-    <a href="contact.html" class="nav-item">
-        <i class="fas fa-hands-helping" aria-hidden="true"></i>
-        <span>Tuntube Mu (Contact Us)</span>
-    </a>
-</div>
  
-    </div>
-</div>
-
-    <!-- Ovulation Hero Section -->
+    <!-- Hero Section -->
     <section class="tracker-hero" data-aos="fade">
         <div class="container">
-            <h1>Kalkuletar Lissafa Ovulation</h1>
-            <p>Domin binciko lokacin zuwan ovulation, lokacin sake yin jinin al'ada da ranaku damar samun juna biyu cikin sauki.</p>
+            <h1>Kalkuletar Bibiyar Ciki</h1>
+            <p>Kalkuletar Binciko EDD, Makonnin Ciki, Zangon Ciki da Kwanakin Da Suka Rage Kafin Haihuwa.</p>
         </div>
     </section>
 
     <!-- Calculator Section -->
-    <section class="calculator-section" id="calculator">
-        <div class="calculator-card" data-aos="fade-up">
-            <h2><i class="fas fa-egg"></i> Kalkuletar Ovulation</h2>
+    <section class="calculator-section" id="dashboard">
+        <div class="locator-container">
+            <div class="calculator-card" data-aos="fade-up">
+              <h2 class="ico"><i class="fas fa-egg"></i> Kalkuletar Ovulation</h2>
             <div class="input-group">
                 <label for="last-period">Ranar Farko da aka fara jinin haila ta karshe (LMP):</label>
                 <input type="date" id="last-period">
@@ -270,6 +260,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </section>
     
