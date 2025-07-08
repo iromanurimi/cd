@@ -3096,7 +3096,7 @@ h1, h2, h3, h4, h5, h6 {
         
         
         /* Calendar Container - unchanged from original */
-        .calendar-container {
+/*         .calendar-container {
             margin-top: 30px;
             padding-top: 30px;
             border-top: 2px solid #f5f5f5;
@@ -3167,7 +3167,7 @@ h1, h2, h3, h4, h5, h6 {
             right: 0;
             text-align: center;
         }
-
+ */
         /* Responsive Design */
         @media (max-width: 768px) {
             .visual-progress-container {
