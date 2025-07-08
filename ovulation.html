@@ -107,169 +107,166 @@
     </section>
 
 
-    <!-- Calculator Section -->
-    <section class="calculator-section" id="calculator">
-         <div class="locator-container">
-            <div class="calculator-card" data-aos="fade-up">
-                <h2><i class="fas fa-egg"></i> Kalkuletar Ovulation</h2>
-                <div class="input-group">
-                    <label for="last-period">Ranar Farko da aka fara jinin haila ta karshe (LMP):</label>
-                    <input type="date" id="last-period">
-                </div>
-                
-                <div class="input-group">
-                    <label for="cycle-length">Zabi Adadin kwanakin da ake dauka kafin sake gani wata sabuwar al'ada (Menstrual Cycle):</label>
-                    <select id="cycle-length">
-                        <option value="21">Kwana 21</option>
-                        <option value="22">Kwana 22</option>
-                        <option value="23">Kwana 23</option>
-                        <option value="24">Kwana 24</option>
-                        <option value="25">Kwana 25</option>
-                        <option value="26">Kwana 26</option>
-                        <option value="27">Kwana 27</option>
-                        <option value="28" selected>Kwana 28</option>
-                        <option value="29">Kwana 29</option>
-                        <option value="30">Kwana 30</option>
-                        <option value="31">Kwana 31</option>
-                        <option value="32">Kwana 32</option>
-                        <option value="33">Kwana 33</option>
-                        <option value="34">Kwana 34</option>
-                        <option value="35">Kwana 35</option>
-                    </select>
-                </div>
-                
-                <div class="button-group">
-                    <button class="btn btn-primary" id="calculate-btn">
-                        <i class="fas fa-calculator"></i> Lissafa
-                    </button>
-                    <button class="btn btn-secondary" id="reset-btn">
-                        <i class="fas fa-redo"></i> Sake Lissafawa
-                    </button>
-                </div>
+   <!-- Calculator Section -->
+<section class="calculator-section" id="calculator">
+    <div class="locator-container">
+        <div class="calculator-card" data-aos="fade-up">
+            <h2><i class="fas fa-calculator"></i> Kalkuletar Ovulation</h2>
+            <div class="input-group">
+                <label for="last-period">Ranar Farko da aka fara jinin haila ta karshe (LMP):</label>
+                <input type="date" id="last-period">
             </div>
-        
+            
+            <div class="input-group">
+                <label for="cycle-length">Zabi Adadin kwanakin da ake dauka kafin sake gani wata sabuwar al'ada (Menstrual Cycle):</label>
+                <select id="cycle-length">
+                    <option value="21">Kwana 21</option>
+                    <option value="22">Kwana 22</option>
+                    <option value="23">Kwana 23</option>
+                    <option value="24">Kwana 24</option>
+                    <option value="25">Kwana 25</option>
+                    <option value="26">Kwana 26</option>
+                    <option value="27">Kwana 27</option>
+                    <option value="28" selected>Kwana 28</option>
+                    <option value="29">Kwana 29</option>
+                    <option value="30">Kwana 30</option>
+                    <option value="31">Kwana 31</option>
+                    <option value="32">Kwana 32</option>
+                    <option value="33">Kwana 33</option>
+                    <option value="34">Kwana 34</option>
+                    <option value="35">Kwana 35</option>
+                </select>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="calculate-btn">
+                    <i class="fas fa-calculator"></i> Lissafa
+                </button>
+                <button class="btn btn-secondary" id="reset-btn">
+                    <i class="fas fa-redo"></i> Sake Lissafawa
+                </button>
+            </div>
+        </div>
+    
         <!-- Redesigned Results Container -->
-            <div class="baby-tracker-container" id="results-container" style="display: none;" data-aos="fade-up">
-                <div class="baby-tracker-header">
-                    <h2>Ga Sakamakon Lissafi</h2>
+        <div class="baby-tracker-container" id="results-container" style="display: none;" data-aos="fade-up">
+            <div class="baby-tracker-header">
+                <h2>Ga Sakamakon Lissafi</h2>
+            </div>
+
+            <!-- Calendar Section (Now First) -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3 class="calendar-title">Ovulation Calendar</h3>
+                    <div class="calendar-navi">
+                        <button class="btn btn-secondary" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 id="current-month">May 2024</h3>
+                        <button class="btn btn-secondary" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
+                <table class="calendar" id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
 
-                
-                    <!-- Ovulation Day Card -->
-                    <div class="tracker-card progress-card">
-                        <div class="card-icon">
-                            <i class="fas fa-egg"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Ranar Zuwan Ovulation</h3>
-                            <div class="week-display" id="ovulation-day">May 1, 2024</div>
-                        </div>
+            <div class="tracker-cards-container">
+                <!-- Ovulation Day Card (Second) -->
+                <div class="tracker-card progress-card">
+                    <div class="card-icon">
+                        <i class="fas fa-egg"></i>
                     </div>
-
-                    <!-- Fertile Window Card -->
-                    <div class="tracker-card baby-dev-card">
-                        <div class="card-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Lokutan Daukar Ciki</h3>
-                            <div class="baby-size">
-                                <div class="size-comparison">Mafi kyawun lokaci don yin jima'i</div>
-                            </div>
-                            <div class="baby-milestones">
-                                <ul>
-                                    <li id="fertile-window">April 27 - May 3, 2024</li>
-                                    <li>Mafi yawan haɗarin ciki: <span id="peak-fertility">May 1</span></li>
-                                    <li>Yawan haɗarin ciki: <span id="high-fertility">April 29 - May 2</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                <div class="tracker-cards-container">
-                    <!-- Next Period Card -->
-                    <div class="tracker-card due-date-card">
-                        <div class="card-icon">
-                            <i class="fas fa-calendar-day"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Jini Al'ada Zata Iya Dawowa a Ranar</h3>
-                            <div class="due-date" id="next-period">May 15, 2024</div>
-                            <div class="countdown" id="period-countdown">14 kwanaki sun rage</div>
-                        </div>
-                    </div>
-
-
-                    <!-- Pregnancy Test Card -->
-                    <div class="tracker-card health-tips-card">
-                        <div class="card-icon">
-                            <i class="fas fa-vial"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Bayanin Gwajin Ciki</h3>
-                            <div class="health-tip">
-                                <p id="test-date-info">Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (May 16, 2024) don mafi ingantaccen sakamako.</p>
-                            </div>
-                            <div class="reminder">
-                                <i class="fas fa-bell"></i> Alamomin farko na ciki: rashin jini, zazzabi, ciwon nonu
-                            </div>
-                        </div>
+                    <div class="card-content">
+                        <h3>Ranar Zuwan Ovulation</h3>
+                        <div class="week-display" id="ovulation-day">May 1, 2024</div>
+                        <p>Wannan shine ranar da kwai zai fita daga cikin ovary</p>
                     </div>
                 </div>
 
-                <!-- Visual Progress -->
-                <div class="visual-progress-container" style="display:none;">
-                    <div class="circular-progress">
-                        <svg class="progress-ring" width="120" height="120">
-                            <circle class="progress-ring-circle" stroke="#A2D7D8" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-                            <circle class="progress-ring-circle progress-ring-fill" stroke="#FF9AA2" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
-                        </svg>
-                        <div class="progress-text" id="cycle-progress-text">60%</div> 
+                <!-- Fertile Window Card (Third) -->
+                <div class="tracker-card baby-dev-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                <div class="pregnancy-timeline">
-                        <div class="timeline-marker" style="left: 60%;">
-                            <div class="marker-dot"></div>
-                            <div class="marker-label">Mako 2</div>
+                    <div class="card-content">
+                        <h3>Lokutan Daukar Ciki</h3>
+                        <div class="baby-size">
+                            <div class="size-comparison">Mafi kyawun lokaci don yin jima'i</div>
                         </div>
-                    </div> 
+                        <div class="baby-milestones">
+                            <ul>
+                                <li id="fertile-window">April 27 - May 3, 2024</li>
+                                <li>Mafi yawan haɗarin ciki: <span id="peak-fertility">May 1</span></li>
+                                <li>Yawan haɗarin ciki: <span id="high-fertility">April 29 - May 2</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Calendar Section (unchanged) -->
-                <div class="calendar-container">
-<div class="calendar-header">
-    <h3 class="calendar-title">Ovulation Calendar</h3>
-    <div class="calendar-navi">
-        <button class="btn btn-secondary" id="prev-month">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <h3 id="current-month">May 2024</h3>
-        <button class="btn btn-secondary" id="next-month">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-</div>
-                    <table class="calendar" id="calendar">
-                        <thead>
-                            <tr>
-                                <th>Sun</th>
-                                <th>Mon</th>
-                                <th>Tue</th>
-                                <th>Wed</th>
-                                <th>Thu</th>
-                                <th>Fri</th>
-                                <th>Sat</th>
-                            </tr>
-                        </thead>
-                        <tbody id="calendar-body">
-                            <!-- Calendar will be generated by JavaScript -->
-                        </tbody>
-                    </table>
+                <!-- Next Period Card (Fourth) -->
+                <div class="tracker-card due-date-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Jini Al'ada Zata Iya Dawowa a Ranar</h3>
+                        <div class="due-date" id="next-period">May 15, 2024</div>
+                        <div class="countdown" id="period-countdown">14 kwanaki sun rage</div>
+                    </div>
+                </div>
+
+                <!-- Pregnancy Test Card (Fifth) -->
+                <div class="tracker-card health-tips-card">
+                    <div class="card-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bayanin Gwajin Ciki</h3>
+                        <div class="health-tip">
+                            <p id="test-date-info">Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (May 16, 2024) don mafi ingantaccen sakamako.</p>
+                        </div>
+                        <div class="reminder">
+                            <i class="fas fa-bell"></i> Alamomin farko na ciki: rashin jini, zazzabi, ciwon nonu
+                        </div>
+                    </div>
                 </div>
             </div>
-         </div>
-    </section>
 
+            <!-- Visual Progress -->
+            <div class="visual-progress-container" style="display:none;">
+                <div class="circular-progress">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" stroke="#A2D7D8" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                        <circle class="progress-ring-circle progress-ring-fill" stroke="#FF9AA2" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
+                    </svg>
+                    <div class="progress-text" id="cycle-progress-text">60%</div> 
+                </div>
+                <div class="pregnancy-timeline">
+                    <div class="timeline-marker" style="left: 60%;">
+                        <div class="marker-dot"></div>
+                        <div class="marker-label">Mako 2</div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
