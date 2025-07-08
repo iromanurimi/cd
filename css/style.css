@@ -3123,9 +3123,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Calendar Styles */
 .calendar-container {
-    margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border);
     width: 100%;
 }
 
