@@ -1,5 +1,27 @@
 
-        
+.week-display {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 5px; /* Reduced from 15px */
+    text-align: center;
+}
+
+.month-display {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: rgba(107, 142, 142, 0.1);
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+
+
+
 
 
     
@@ -2448,13 +2470,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
-.week-display {
+/* .week-display {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 15px;
 }
-
+ */
 /* Progress Bar Styles */
 .progress-container {
   margin-bottom: 15px;
