@@ -157,24 +157,24 @@
                     </div>
                 </div>
 
-                <!-- Progress Card -->
-                <div class="tracker-card progress-card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="card-content">
-                        <h3>Ci Gabanku</h3>
-                        <div class="week-display" id="current-week">Mako 24, Rana 3</div>
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progress-fill" style="width: 60%;"></div>
-                            </div>
-                            <div class="progress-percent" id="progress-percent">60% cikakke</div>
-                        </div>
-                        <div class="trimester-info" id="trimester-info">Zango na 2 (Makonni 14-27)</div>
-                    </div>
-                </div>
-
+               <!-- Progress Card -->
+<div class="tracker-card progress-card">
+    <div class="card-icon">
+        <i class="fas fa-chart-line"></i>
+    </div>
+    <div class="card-content">
+        <h3>Ci Gabanku</h3>
+        <div class="week-display" id="current-week">Mako 24, Rana 3</div>
+        <div class="month-display" id="current-month">Wata 5</div> <!-- Add this line -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 60%;"></div>
+            </div>
+            <div class="progress-percent" id="progress-percent">60% cikakke</div>
+        </div>
+        <div class="trimester-info" id="trimester-info">Zango na 2 (Makonni 14-27)</div>
+    </div>
+</div>
                 <!-- Baby Development Card -->
                 <div class="tracker-card baby-dev-card">
                     <div class="card-icon">
@@ -584,82 +584,89 @@
         return date.toLocaleDateString('ha-NG', options);
     }
 
-    // Update all pregnancy info displays with new design
-    function updatePregnancyInfo(dueDate) {
-        const progress = calculatePregnancyProgress(dueDate);
-        const weekData = babyDevelopmentData[progress.weeks] || {
-            size: getFruitSize(progress.weeks),
-            milestones: ["Babu bayanan ci gaba don wannan mako"],
-            healthTips: ["Ci gaba da kula da ciki na yau da kullun"],
-            reminder: "Tuntuɓi mai kula da lafiyar ku"
-        };
+  function updatePregnancyInfo(dueDate) {
+    const progress = calculatePregnancyProgress(dueDate);
+    const weekData = babyDevelopmentData[progress.weeks] || {
+        size: getFruitSize(progress.weeks),
+        milestones: ["Babu bayanan ci gaba don wannan mako"],
+        healthTips: ["Ci gaba da kula da ciki na yau da kullun"],
+        reminder: "Tuntuɓi mai kula da lafiyar ku"
+    };
 
-        // Update Due Date Card
-        document.getElementById('due-date-display').textContent = 
-            formatDate(dueDate);
-        document.getElementById('days-remaining').textContent = 
-            ` kwanaki ${progress.daysRemaining} sun rage`;
+    // Calculate months (approximate)
+    const months = Math.floor(progress.weeks / 4.345); // Average weeks per month
+    const monthNames = ["Janairu", "Faburairu", "Maris", "Afirilu", "Mayu", "Yuni", 
+                       "Yuli", "Agusta", "Satumba", "Oktoba", "Nuwamba", "Disamba"];
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + (progress.weeks * 7));
 
-        // Update Progress Card
-        document.getElementById('current-week').textContent = 
-            `Mako ${progress.weeks}, Rana ${progress.days}`;
-        document.getElementById('progress-fill').style.width = 
-            `${progress.percentComplete}%`;
-        document.getElementById('progress-percent').textContent = 
-            `${progress.percentComplete}% cikakke`;
-        document.getElementById('trimester-info').textContent = 
-            `Zango na ${progress.trimester} (${progress.trimester === '1st' ? 'Makonni 1-13' : 
-              progress.trimester === '2nd' ? 'Makonni 14-27' : 'Makonni 28-40'})`;
+    // Update Due Date Card
+    document.getElementById('due-date-display').textContent = 
+        formatDate(dueDate);
+    document.getElementById('days-remaining').textContent = 
+        ` kwanaki ${progress.daysRemaining} sun rage`;
 
-        // Update Circular Progress
-        const circumference = 2 * Math.PI * 52;
-        const offset = circumference - (progress.percentComplete / 100) * circumference;
-        document.querySelector('.progress-ring-fill').style.strokeDashoffset = offset;
-        document.getElementById('circular-progress-text').textContent = 
-            `${progress.percentComplete}%`;
+    // Update Progress Card
+    document.getElementById('current-week').textContent = 
+        `Mako ${progress.weeks}, Rana ${progress.days}`;
+    document.getElementById('current-month').textContent = 
+        `Watan ${monthNames[currentDate.getMonth()]} (Wata ${months + 1})`;
+    document.getElementById('progress-fill').style.width = 
+        `${progress.percentComplete}%`;
+    document.getElementById('progress-percent').textContent = 
+        `${progress.percentComplete}% cikakke`;
+    document.getElementById('trimester-info').textContent = 
+        `Zango na ${progress.trimester} (${progress.trimester === '1st' ? 'Makonni 1-13' : 
+          progress.trimester === '2nd' ? 'Makonni 14-27' : 'Makonni 28-40'})`;
 
-        // Update Baby Development Card
-        document.querySelector('.size-comparison').textContent = 
-            `Girman ${weekData.size}`;
-        if (weekData.sizeImage) {
-            document.getElementById('baby-size-image').src = weekData.sizeImage;
-            document.getElementById('baby-size-image').alt = 
-                `Kwatancen girman jariri: ${weekData.size}`;
-        }
-        
-        const milestonesList = document.getElementById('baby-milestones').querySelector('ul');
-        milestonesList.innerHTML = '';
-        weekData.milestones.forEach(milestone => {
-            const li = document.createElement('li');
-            li.textContent = milestone;
-            milestonesList.appendChild(li);
-        });
+    // Update Circular Progress
+    const circumference = 2 * Math.PI * 52;
+    const offset = circumference - (progress.percentComplete / 100) * circumference;
+    document.querySelector('.progress-ring-fill').style.strokeDashoffset = offset;
+    document.getElementById('circular-progress-text').textContent = 
+        `${progress.percentComplete}%`;
 
-        // Update Health Tips Card
-        const healthTipElement = document.getElementById('health-tip');
-        if (weekData.healthTips) {
-            healthTipElement.querySelector('p').textContent = Array.isArray(weekData.healthTips) ? 
-                weekData.healthTips.join(' ') : weekData.healthTips;
-            healthTipElement.style.display = 'block';
-        } else {
-            healthTipElement.style.display = 'none';
-        }
-        
-        const reminderElement = document.getElementById('reminder');
-        if (weekData.reminder) {
-            reminderElement.innerHTML = `<i class="fas fa-bell"></i> ${weekData.reminder}`;
-            reminderElement.style.display = 'flex';
-        } else {
-            reminderElement.style.display = 'none';
-        }
+    // Update Baby Development Card
+    document.querySelector('.size-comparison').textContent = 
+        `Girman ${weekData.size}`;
+    if (weekData.sizeImage) {
+        document.getElementById('baby-size-image').src = weekData.sizeImage;
+        document.getElementById('baby-size-image').alt = 
+            `Kwatancen girman jariri: ${weekData.size}`;
+    }
+    
+    const milestonesList = document.getElementById('baby-milestones').querySelector('ul');
+    milestonesList.innerHTML = '';
+    weekData.milestones.forEach(milestone => {
+        const li = document.createElement('li');
+        li.textContent = milestone;
+        milestonesList.appendChild(li);
+    });
 
-        // Update Timeline Marker
-        document.querySelector('.timeline-marker').style.left = 
-            `${progress.percentComplete}%`;
-        document.querySelector('.marker-label').textContent = 
-            `Mako ${progress.weeks}`;
+    // Update Health Tips Card
+    const healthTipElement = document.getElementById('health-tip');
+    if (weekData.healthTips) {
+        healthTipElement.querySelector('p').textContent = Array.isArray(weekData.healthTips) ? 
+            weekData.healthTips.join(' ') : weekData.healthTips;
+        healthTipElement.style.display = 'block';
+    } else {
+        healthTipElement.style.display = 'none';
+    }
+    
+    const reminderElement = document.getElementById('reminder');
+    if (weekData.reminder) {
+        reminderElement.innerHTML = `<i class="fas fa-bell"></i> ${weekData.reminder}`;
+        reminderElement.style.display = 'flex';
+    } else {
+        reminderElement.style.display = 'none';
     }
 
+    // Update Timeline Marker
+    document.querySelector('.timeline-marker').style.left = 
+        `${progress.percentComplete}%`;
+    document.querySelector('.marker-label').textContent = 
+        `Mako ${progress.weeks}`;
+}
     // Calculate due date based on last menstrual period (LMP)
     function calculateDueDate(lmpDate) {
         const dueDate = new Date(lmpDate);
