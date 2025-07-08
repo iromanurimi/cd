@@ -699,42 +699,64 @@
     }
 
     // Calculate due date - main function
-    document.getElementById('calculate-btn').addEventListener('click', function() {
-        const method = document.getElementById('calculation-method').value;
-        let dueDate;
-        
-        if (method === 'lmp') {
-            const lmp = new Date(document.getElementById('last-period').value);
-            if (isNaN(lmp.getTime())) {
-                alert('Don Allah shigar da ranar haila ta ƙarshe daidai');
-                return;
+document.getElementById('calculate-btn').addEventListener('click', function() {
+    const method = document.getElementById('calculation-method').value;
+    let dueDate;
+    
+    // Show spinner on button
+    const calculateBtn = document.getElementById('calculate-btn');
+    const originalBtnText = calculateBtn.innerHTML;
+    calculateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ana Lissafawa...';
+    calculateBtn.disabled = true;
+    
+    // Use setTimeout to allow UI to update before heavy calculations
+    setTimeout(() => {
+        try {
+            if (method === 'lmp') {
+                const lmp = new Date(document.getElementById('last-period').value);
+                if (isNaN(lmp.getTime())) {
+                    alert('Don Allah shigar da ranar haila ta ƙarshe daidai');
+                    calculateBtn.innerHTML = originalBtnText;
+                    calculateBtn.disabled = false;
+                    return;
+                }
+                
+                dueDate = calculateDueDate(lmp);
+            } else {
+                dueDate = new Date(document.getElementById('due-date').value);
+                if (isNaN(dueDate.getTime())) {
+                    alert('Don Allah shigar da ranar haihuwa daidai');
+                    calculateBtn.innerHTML = originalBtnText;
+                    calculateBtn.disabled = false;
+                    return;
+                }
             }
             
-            dueDate = calculateDueDate(lmp);
-        } else {
-            dueDate = new Date(document.getElementById('due-date').value);
-            if (isNaN(dueDate.getTime())) {
-                alert('Don Allah shigar da ranar haihuwa daidai');
-                return;
-            }
+            // Update UI with new design
+            updatePregnancyInfo(dueDate);
+            
+            // Show results
+            document.getElementById('pregnancy-info').style.display = 'block';
+            
+            // Add animation to progress fill
+            const progressFill = document.getElementById('progress-fill');
+            setTimeout(() => {
+                progressFill.style.transition = 'width 1s ease';
+            }, 100);
+            
+            // Scroll to pregnancy info
+            document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
+            
+        } catch (error) {
+            console.error('Error in calculation:', error);
+            alert('An sami matsala yayin lissafin. Don Allah gwada kuma.');
+        } finally {
+            // Restore button state
+            calculateBtn.innerHTML = originalBtnText;
+            calculateBtn.disabled = false;
         }
-        
-        // Update UI with new design
-        updatePregnancyInfo(dueDate);
-        
-        // Show results
-        document.getElementById('pregnancy-info').style.display = 'block';
-        
-        // Add animation to progress fill
-        const progressFill = document.getElementById('progress-fill');
-        setTimeout(() => {
-            progressFill.style.transition = 'width 1s ease';
-        }, 100);
-        
-        // Scroll to pregnancy info
-        document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
-    });
-    
+    }, 50); // Small delay to allow spinner to show
+});
     // Reset calculator
     document.getElementById('reset-btn').addEventListener('click', function() {
         document.getElementById('last-period').value = '';
