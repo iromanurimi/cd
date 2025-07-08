@@ -3098,6 +3098,7 @@ h1, h2, h3, h4, h5, h6 {
 
   
 
+
 /* Calendar Styles */
 .calendar-container {
     margin-top: 2rem;
@@ -3241,6 +3242,30 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--dark);
     text-transform: capitalize;
 }
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .calendar-title {
+        font-size: 1rem;
+    }
+    
+    .calendar-navi h3 {
+        font-size: 1rem;
+        min-width: 120px;
+    }
+    
+    .calendar-navi button {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+
+
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 767px) {
